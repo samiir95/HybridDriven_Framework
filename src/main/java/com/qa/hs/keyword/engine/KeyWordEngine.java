@@ -110,7 +110,7 @@ public class KeyWordEngine {
 					element = driver.findElement(By.name(locatorValue));
 					if (action.equalsIgnoreCase("sendkeys")) {
 						element.clear();
-						element.sendKeys(value);
+						element.sendKeys(prop.getProperty(value));
 					} else if (action.equalsIgnoreCase("click")) {
 						element.click();
 					} else if (action.equalsIgnoreCase("isDisplayed")) {
