@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import javax.validation.constraints.AssertTrue;
+import org.testng.Assert;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -163,6 +165,7 @@ public class KeyWordEngine {
 						element.isDisplayed();
 					} else if (action.equalsIgnoreCase("getText")) {
 						String elementText = element.getText();
+						Assert.assertEquals(elementText, value);					
 						System.out.println("text from element : " + elementText);
 					}
 					locatorType = null;

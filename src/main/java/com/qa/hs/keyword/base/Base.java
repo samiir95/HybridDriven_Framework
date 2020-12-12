@@ -24,13 +24,14 @@ public class Base {
 
 	public WebDriver init_driver(String browserName) {
 		if (browserName.equals("chrome")) {
+			WebDriverManager.chromedriver().setup();
 			if (prop.getProperty("headless").equals("yes")) {
 				// headless mode:
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless");
 				driver = new ChromeDriver(options);
 			} else {
-				WebDriverManager.chromedriver().setup();
+
 				driver = new ChromeDriver();
 				driver.manage().window().maximize();
 			}
@@ -44,8 +45,8 @@ public class Base {
 	public Properties init_properties() {
 		prop = new Properties();
 		try {
-			FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+
-					 "\\src\\main\\java\\com\\qa\\hs\\keyword\\config\\config.properties");
+			FileInputStream ip = new FileInputStream(System.getProperty("user.dir")
+					+ "\\src\\main\\java\\com\\qa\\hs\\keyword\\config\\config.properties");
 			prop.load(ip);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
